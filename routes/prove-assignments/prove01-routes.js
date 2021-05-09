@@ -1,5 +1,5 @@
 const express = require('express');
-const helpers = require('../public/scripts/example');
+const helpers = require('../../public/scripts/example');
 const router = express.Router();
 
 
@@ -26,16 +26,16 @@ const users = [{
 router.get('/', (req, res, next) => {
   let message = req.query.message;
   console.log(message);
-  res.render('pages/prove01a', {
+  res.render('pages/prove/prove01a', {
     title: 'Prove 01 - Create User',
-    path: '/',
+    path: '/01/create',
   });
 });
 
 router.all('/users', (req, res, next) => {
-  res.render('pages/prove01b', {
+  res.render('pages/prove/prove01b', {
     title: 'Prove 01 - Users',
-    path: '/users',
+    path: '/01/users',
     users: users,
   });
 });
@@ -61,7 +61,7 @@ router.post('/create-user', (req, res, next) => {
     };
     users.push(newUser);
     console.log(`${newUser['firstName']} ${newUser['lastName']} was created successfully. A confirmation email was sent to ${newUser['email']}.`);
-    res.redirect('/users');
+    res.redirect('./users');
   }
 });
 

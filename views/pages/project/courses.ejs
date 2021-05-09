@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title%></title>
+  <link rel="stylesheet" href="../stylesheets/upskill.css">
+</head>
+
+<body>
+
+  <body>
+    <header>
+      <p class="title"><a href="/upskill">UpSkill | Become Greater</a></p>
+      <% include ../../includes/up-nav %>
+    </header>
+
+
+    <main>
+      <section class="courses-container">
+        <h2>Available Courses</h2>
+        <% courses.forEach((c)=>{ %>
+        <div class="course">
+          <p class="c-title"><%= c.title %></p>
+          <figure class="c-img">
+            <img src="<%= c.imgSrc %>" alt="<%= c.title %>">
+          </figure>
+          <div class="c-info">
+            <p class="c-instructor">Instructor: <%= c.instructor %></p>
+            <p class="c-rating">Rating: <%= c.rating %></p>
+            <p class="c-price">$<%= c.price %></p>
+            <p class="c-duration">Weeks: <%= c.duration %></p>
+            <a href="course-details/<%= c.id %>">See More</a>
+          </div>
+        </div>
+        <% }); %>
+
+      </section>
+    </main>
+    <footer>
+      <aside>
+        <h3>Contact Us:</h3>
+        <ul>
+          <li>Tel: (xxx) xxx-xxxx</li>
+          <li>Email: contact@upskill.com</li>
+          <li>1557 Pauline Drive, San Jose, California</li>
+        </ul>
+      </aside>
+      <aside>
+        <h3>Follow Us:</h3>
+        <ul>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">YouTube</a></li>
+        </ul>
+      </aside>
+    </footer>
+  </body>
+
+</html>

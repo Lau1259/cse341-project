@@ -1,0 +1,62 @@
+[
+  {
+    "title": "JavaScript for Beginners",
+    "imgSrc": "https://placeimg.com/200/200/tech",
+    "instructor": "Lautaro Cuevas",
+    "rating": 5,
+    "price": 50,
+    "duration": 12,
+    "description": "This course will teach you the fundamentals of JavaScript. This includes everything from creating variables to creating and using functions.",
+    "id":"Sk0001"
+  },
+  {
+    "title": "CSS Animations",
+    "imgSrc": "https://placeimg.com/200/200/tech",
+    "instructor": "Barry Allen",
+    "rating": 5.0,
+    "price": 99,
+    "duration": 2,
+    "description": "This course goes over best practice principles for CSS animations. It requires a basic understanding of JavaScript and CSS.",
+    "id":"Sk0002"
+  },
+  {
+    "title": "CSS Basics",
+    "imgSrc": "https://placeimg.com/200/200/tech",
+    "instructor": "Francisco Ramon",
+    "rating": 3.5,
+    "price": 20,
+    "duration": 6,
+    "description": "This course will teach you the fundamentals of CSS. It starts with understanding how to use selector and goes over some of the most commonly used rules in CSS3.",
+    "id":"Sk0003"
+  },
+  {
+    "title": "Python Basics",
+    "imgSrc": "https://placeimg.com/200/200/tech",
+    "instructor": "Lautaro Cuevas",
+    "rating": 4.5,
+    "price": 35,
+    "duration": 8,
+    "description": "This course will teach you the fundamentals of Python. It starts with understanding how to print to the console and covers creating functions in Python 3.",
+    "id":"Sk0004"
+  },
+  {
+    "title": "Syntactic HTML",
+    "imgSrc": "https://placeimg.com/200/200/tech",
+    "instructor": "Darren Ward",
+    "rating": 4.0,
+    "price": 20,
+    "duration": 4,
+    "description": "This course will teach how the appropriate use cases for HTML tags. This will cover when to use specific selectors and will explain the benefits of using syntactic HTML over using plain divs.",
+    "id":"Sk0005"
+  },
+  {
+    "title": "Object Oriented Programming Basics",
+    "imgSrc": "https://placeimg.com/200/200/tech",
+    "instructor": "Jake Fischer",
+    "rating": 5.0,
+    "price": 50,
+    "duration": 8,
+    "description": "This course will cover the fundamentals for object oriented programming and work with a course project that will allow you to apply these principles in JavaScript.",
+    "id":"Sk0006"
+  }
+]

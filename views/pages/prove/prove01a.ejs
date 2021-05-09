@@ -2,14 +2,14 @@
 <html>
 
 <head>
-  <% include ../includes/header.ejs %>
+  <% include ../../includes/header.ejs %>
 </head>
 
 <body>
-  <% include ../includes/nav.ejs %>
+  <% include ../../includes/nav.ejs %>
   <div class="container">
     <h1><%= title %></h1>
-    <form action="/create-user" method="POST">
+    <form action="./01/create-user" method="POST">
       <label for="firstName">First Name:
         <input type="text" name="firstName" required>
       </label>

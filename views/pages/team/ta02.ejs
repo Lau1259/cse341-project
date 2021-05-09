@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <% include ../../includes/header.ejs %>
+</head>
+
+<body>
+  <% include ../../includes/nav.ejs %>
+  <div class="jumbotron text-center">
+    <div class="container">
+      <h1><%= title %></h1>
+    </div>
+  </div>
+  <div class="container">
+    <p><%= message %></p>
+    <form action="ta02/addUser" method="POST">
+      <label for="name">Please enter a name:
+        <input type="name" name="firstName" required>
+      </label>
+      <button type="submit">Add User</button>
+    </form>
+    <form action="ta02/removeUser" method="POST">
+      <label for="name">Please enter a name:
+        <input type="name" name="firstName" required>
+      </label>
+      <button type="submit">Remove User</button>
+    </form>
+    <h2>Registered Users:</h2>
+    <!-- users -->
+    <ul>
+      <% names.forEach( name => { %>
+      <li> <%= name %> </li>
+      <% }) %>
+    </ul>
+
+
+  </div>
+
+
+</body>
+
+</html>
