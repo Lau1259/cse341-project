@@ -14,9 +14,28 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const PORT = process.env.PORT || 3000 // So we can run on heroku || (OR) localhost:5000
-
+const PORT = process.env.PORT || 3000; // So we can run on heroku || (OR) localhost:5000
+const cors = require('cors')
+const mongoose = require('mongoose');
 const app = express();
+
+// Cors set up
+const corsOptions = {
+  origin: "https://cse341-lc-prove02.herokuapp.com/",
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
+
+const options = {
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+  family: 4
+};
+
+const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://testUser:test1234@cluster0.3llkw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
 
 // Route setup. You can implement more in the future!
 const routes = require('./routes/master-routes');
@@ -41,5 +60,17 @@ app.use(express.static(path.join(__dirname, 'public')))
       title: '404 - Page Not Found',
       path: req.url
     })
+  });
+
+  mongoose
+  .connect(
+    MONGODB_URL, options
+  )
+  .then(result => {
+     // This should be your user handling code implement following the course videos
+    console.log(result);
+    app.listen(PORT);
   })
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+  .catch(err => {
+    console.log(err);
+  });
