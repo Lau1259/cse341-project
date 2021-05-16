@@ -61,6 +61,13 @@ module.exports.postAddToCart = (req, res, next) => {
     })
 };
 
+module.exports.getPurchaseCart = (req, res, next) => {
+  req.user.purchaseCart()
+    .then(result => {
+      // console.log(result);
+      res.redirect('./cart')
+    })
+};
 module.exports.getClearCart = (req, res, next) => {
   req.user.clearCart()
     .then(result => {

@@ -50,9 +50,18 @@ const userSchema = new Schema({
   },
 });
 
-userSchema.methods.clearCart = function() {
+userSchema.methods.clearCart = function () {
   this.cart.items = [];
   return this.save()
+}
+
+userSchema.methods.purchaseCart = function () {
+  this.courseList.items = this.cart.items;
+  console.log(this.courseList.items);
+  this.cart.items = [];
+  console.log(`Cart: ${this.cart.items}`);
+  console.log('Successfuly Purchased Courses');
+  return this.save();
 }
 
 userSchema.methods.removeFromCart = function (item) {
@@ -62,7 +71,7 @@ userSchema.methods.removeFromCart = function (item) {
   });
   const updatedCartItems = [...this.cart.items];
   if (cartCourseIndex !== -1) {
-    updatedCartItems.splice(cartCourseIndex,1);
+    updatedCartItems.splice(cartCourseIndex, 1);
   }
   const updatedCart = {
     items: updatedCartItems

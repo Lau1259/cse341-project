@@ -19,10 +19,13 @@
 
 
     <main>
-      <section class="course-container">
-        <a href="./clearCart">Clear Cart</a>
+      <section class="cart-container">
+        <div class="choices">
+          <a class="cart-action" href="./clearCart">Clear Cart</a>
+          <a class="cart-action" href="./purchaseCart">Purchase Courses</a>
+        </div>
         <% items.forEach(item=>{ %>
-        <p class="c-title"><%= item.courseId.title %></p>
+        <p class="cart-title"><%= item.courseId.title %></p>
         <form action="./removeFromCart" method="post">
           <input type="hidden" name="itemId" value="<%= item.courseId._id %>">
           <input type="submit" value="Remove From Cart">
