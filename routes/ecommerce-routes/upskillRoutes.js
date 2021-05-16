@@ -6,7 +6,7 @@ const upskillController = require('../../controllers/upskill');
 router.use(express.static(path.join(__dirname, 'public')))
   .get('/newUser', upskillController.getNewUser)
   .get('/cart', upskillController.getCart)
-  .get('/removeFromCart', upskillController.postRemoveFromCart)
+  .post('/removeFromCart', upskillController.postRemoveFromCart)
   .post('/addUser', upskillController.postAddUser)
   .get('/clearCart', upskillController.getClearCart)
   .post('/addToCart', upskillController.postAddToCart)

@@ -55,21 +55,20 @@ userSchema.methods.clearCart = function() {
   return this.save()
 }
 
-userSchema.methods.removeFromCart = function (course) {
+userSchema.methods.removeFromCart = function (item) {
+  console.log("Removing: " + item.title);
   const cartCourseIndex = this.cart.items.findIndex(cp => {
-    console.log(course);
-    console.log(cp._id);
-    return cp.courseId.toString() === course._id.toString();
+    return cp.courseId._id.toString() === item._id.toString();
   });
   const updatedCartItems = [...this.cart.items];
   if (cartCourseIndex !== -1) {
-    updatedCartItems.splice(cartCourseIndex, 1);
+    updatedCartItems.splice(cartCourseIndex,1);
   }
   const updatedCart = {
     items: updatedCartItems
   };
   this.cart = updatedCart;
-  return this.save();
+  return this.save()
 }
 
 userSchema.methods.addToCart = function (course) {

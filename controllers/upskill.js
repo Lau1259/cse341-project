@@ -52,32 +52,32 @@ module.exports.getCart = (req, res, next) => {
 module.exports.postAddToCart = (req, res, next) => {
   courseId = req.body.courseId;
   Course.findById(courseId)
-  .then(course => {
-    return req.user.addToCart(course);
-  })
-  .then(result=>{
-    console.log(result);
-    res.redirect('./courses')
-  })
+    .then(course => {
+      return req.user.addToCart(course);
+    })
+    .then(result => {
+      console.log(result);
+      res.redirect('./courses')
+    })
 };
 
 module.exports.getClearCart = (req, res, next) => {
   req.user.clearCart()
-  .then(result=>{
-    console.log(result);
-    res.redirect('./cart')
-  })
+    .then(result => {
+      console.log(result);
+      res.redirect('./cart')
+    })
 };
 module.exports.postRemoveFromCart = (req, res, next) => {
-  courseId = req.body.itemId;
-  Course.findById(courseId)
-  .then(course => {
-    return req.user.removeFromCart(course);
-  })
-  .then(result=>{
-    console.log(result);
-    res.redirect('./cart')
-  })
+  itemId = req.body.itemId;
+  Course.findById(itemId)
+    .then(course => {
+      return req.user.removeFromCart(course);
+    })
+    .then(result => {
+      // console.log(result);
+      res.redirect('./cart')
+    })
 };
 
 /**********************************************************
