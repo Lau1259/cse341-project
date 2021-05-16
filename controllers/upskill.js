@@ -88,7 +88,7 @@ module.exports.getNewCourse = (req, res, next) => {
   res.render('pages/project/courseForm', {
     title: "New Course | UpSkill",
     path: "/upskill/newCourse",
-    action: "./newCourse",
+    action: "./addCourse",
     actionText: "Add Course",
     course: {}
   });
