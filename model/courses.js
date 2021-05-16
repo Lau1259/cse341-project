@@ -7,7 +7,11 @@ const courseSchema = new Schema({
     type: String,
     required: true
   },
-  price:{
+  instructor: {
+    type: String,
+    required: true
+  },
+  price: {
     type: Number,
     required: true
   },
@@ -18,6 +22,24 @@ const courseSchema = new Schema({
   imgUrl: {
     type: String,
     required: true
+  },
+  reviews: {
+    items: [{
+      reviewId: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: 'Course'
+      },
+      userId: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: 'User'
+      },
+      body: {
+        type: String,
+        required: true
+      }
+    }]
   }
 });
 

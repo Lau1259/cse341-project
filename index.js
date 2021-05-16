@@ -18,6 +18,7 @@ const PORT = process.env.PORT || 3000; // So we can run on heroku || (OR) localh
 const cors = require('cors')
 const mongoose = require('mongoose');
 const app = express();
+const User = require('./model/users');
 
 // Cors set up
 const corsOptions = {
@@ -41,6 +42,24 @@ const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://testUser:test1234@
 const routes = require('./routes/master-routes');
 
 app.use(express.static(path.join(__dirname, 'public')))
+  .use((req, res, next) => {
+    User.findById("609f44d9b317c42158360bd7")
+      .populate({
+        path: "cart",
+        populate: {
+          path: "items",
+          populate:{
+            path: "courseId"
+          }
+        }
+      })
+      .then(user => {
+        req.user = user;
+        // user.save()
+        next();
+      })
+      .catch(err => console.log(err));
+  })
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .use(bodyParser({
@@ -62,13 +81,30 @@ app.use(express.static(path.join(__dirname, 'public')))
     })
   });
 
-  mongoose
+mongoose
   .connect(
     MONGODB_URL, options
   )
   .then(result => {
-     // This should be your user handling code implement following the course videos
-    console.log(result);
+    User.findOne().then(user => {
+      if (!user) {
+        const user = new User({
+          firstName: "Demo",
+          lastName: "User",
+          userName: "Demo001",
+          email: "De@mo.mail",
+          password: "$ecret",
+          privilege: 3,
+          cart: {
+            items: []
+          },
+          courseList: {
+            items: []
+          }
+        });
+        user.save();
+      }
+    })
     app.listen(PORT);
   })
   .catch(err => {

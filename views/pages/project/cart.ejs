@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title%> | UpSkill</title>
+  <link rel="stylesheet" href="/stylesheets/upskill.css">
+</head>
+
+<body>
+
+  <body>
+    <header>
+      <p class="title"><a href="/upskill">UpSkill | Become Greater</a></p>
+      <% include ../../includes/up-nav %>
+    </header>
+
+
+    <main>
+      <section class="course-container">
+        <a href="./clearCart">Clear Cart</a>
+        <% items.forEach(item=>{ %>
+        <p class="c-title"><%= item.courseId.title %></p>
+        <form action="./removeFromCart" method="post">
+          <input type="hidden" name="itemId" value="<%= item.courseId._id %>">
+          <input type="submit" value="Remove From Cart">
+        </form>
+        </div>
+        <% }) %>
+      </section>
+    </main>
+    <% include ../../includes/up-footer %>
+  </body>
+
+</html>
