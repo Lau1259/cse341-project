@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title%></title>
+  <link rel="stylesheet" href="../stylesheets/upskill.css">
+</head>
+
+<body>
+  <header>
+    <p class="title"><a href="/upskill">UpSkill | Become Greater</a></p>
+    <% include ../../includes/up-nav %>
+
+  </header>
+
+  <main>
+    <form action="register" method="post">
+      <label for="firstName">
+        First Name:
+        <input type="text" name="firstName">
+      </label>
+      <label for="lastName">
+        Last Name:
+        <input type="text" name="lastName">
+      </label>
+      <label for="email">
+        Email:
+        <input type="email" name="email">
+      </label>
+      <label for="password">
+        Password:
+        <input type="password" name="password">
+      </label>
+      <label for="password">
+        Confirm Password:
+        <input type="password" name="confirmPassword">
+      </label>
+      <input type="submit" value="Sign Up">
+    </form>
+  </main>
+  <footer>
+    <% include ../../includes/up-footer %>
+</body>
+
+</html>

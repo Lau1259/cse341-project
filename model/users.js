@@ -14,11 +14,12 @@ const userSchema = new Schema({
   },
   userName: {
     type: String,
-    required: true
+    required: false
   },
   email: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   password: {
     type: String,
@@ -56,7 +57,7 @@ userSchema.methods.clearCart = function () {
 }
 
 userSchema.methods.purchaseCart = function () {
-  this.courseList.items = this.cart.items;
+  this.courseList.items = [...this.courseList.items,...this.cart.items];
   console.log(this.courseList.items);
   this.cart.items = [];
   console.log(`Cart: ${this.cart.items}`);

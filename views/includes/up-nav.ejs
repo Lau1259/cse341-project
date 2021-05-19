@@ -1,8 +1,22 @@
 <nav>
   <ul>
     <li><a href="/upskill/courses">Courses</a></li>
+    <% if(isAuthenticated){ %>
     <li><a href="/upskill/cart">My Cart</a></li>
     <li><a href="/upskill/newCourse">Add a New Course</a></li>
-    <!-- <li><a href="#">Instructors</a></li> -->
+    <% } %>
+  </ul>
+  <ul class="authentication">
+    <% if(isAuthenticated){ %>
+    <li><a href="/upskill/profile">My Profile</a></li>
+    <li>
+      <form action="/upskill/logout" method="post">
+        <input type="submit" value="Log Out">
+      </form>
+    </li>
+    <% } else { %>
+    <li><a href="/upskill/login">Log in</a></li>
+    <li><a href="/upskill/register">Sign Up</a></li>
+    <% } %>
   </ul>
 </nav>
