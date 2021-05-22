@@ -9,8 +9,6 @@ module.exports.getCart = (req, res, next) => {
   res.render('pages/project/cart', {
     title: "New Course | UpSkill",
     path: "/upskill/newCourse",
-    isAuthenticated: req.session.isLoggedIn,
-    items: items
   });
 };
 

@@ -6,11 +6,11 @@ const bcrypt = require('bcryptjs');
 const User = require('../model/users');
 
 module.exports.getLogin = (req, res, next) => {
-  console.log(req.session.isLoggedIn);
   res.render('pages/project/login', {
     path: '/login',
     title: 'Login',
-    isAuthenticated: req.session.isLoggedIn
+    message: req.flash('message'),
+    msgType: req.flash('msgType'),
   })
 };
 
@@ -22,6 +22,8 @@ module.exports.postLogin = (req, res, next) => {
     })
     .then(user => {
       if (!user) {
+        req.flash('message', 'There are no users registered with that email.');
+        req.flash('msgType', 'error');
         return res.redirect('./login');
       }
       bcrypt.compare(password, user.password)
@@ -34,6 +36,8 @@ module.exports.postLogin = (req, res, next) => {
               res.redirect('./');
             });
           }
+          req.flash('message', 'The password you entered is incorrect.');
+          req.flash('msgType', 'error');
           res.redirect('./login');
         }).catch(err => {
           console.log(err);
@@ -45,11 +49,9 @@ module.exports.postLogin = (req, res, next) => {
 };
 
 module.exports.getRegister = (req, res, next) => {
-  console.log(req.session.isLoggedIn);
   res.render('pages/project/register', {
     path: '/register',
     title: 'Sign Up',
-    isAuthenticated: req.session.isLoggedIn
   })
 };
 
@@ -64,6 +66,8 @@ module.exports.postRegister = (req, res, next) => {
     })
     .then(userDoc => {
       if (userDoc || password !== confirmPassword) {
+        req.flash('message', 'Passwords must match');
+        req.flash('msgType', 'error');
         return res.redirect('./register');
       }
       return bcrypt
@@ -84,6 +88,8 @@ module.exports.postRegister = (req, res, next) => {
           return newUser.save();
         })
         .then(result => {
+          req.flash('message', 'You have successfully created an account, please log in to continue.');
+        req.flash('msgType', 'success');
           res.redirect('./login');
         })
     })

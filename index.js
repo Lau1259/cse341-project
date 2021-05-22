@@ -8,6 +8,9 @@ const cors = require('cors')
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
+const csrf = require('csurf');
+const flash = require('connect-flash');
+
 const app = express();
 const User = require('./model/users');
 const routes = require('./routes/master-routes');
@@ -36,6 +39,9 @@ const store = new MongoDBStore({
   uri: MONGODB_URL,
   collection: 'sessions'
 });
+
+const csrfProtection = csrf();
+
 /**********************************************************
  Route Set Up
 **********************************************************/
@@ -51,6 +57,8 @@ app.use(session({
   saveUninitialized: false,
   store: store
 }));
+app.use(csrfProtection);
+app.use(flash());
 app.use((req, res, next) => {
   if (!req.session.user) {
     return next();
@@ -71,6 +79,11 @@ app.use((req, res, next) => {
     })
     .catch(err => console.log(err));
 })
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.session.isLoggedIn;
+  res.locals.csrfToken = req.csrfToken();
+  next();
+});
 app
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')

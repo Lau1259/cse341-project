@@ -41,9 +41,11 @@
           <input type="text" name="instructor" id="instructor" <% if(typeof(course.instructor) != null){ %>
             value="<%= course.instructor %>" <% } %>>
         </label>
+
         <% if(course._id){ %>
           <input type="hidden" name="courseId" value="<%= course._id %>">
         <% } %>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
         <input type="submit" value="<%= actionText %>">
       </form>
     </main>

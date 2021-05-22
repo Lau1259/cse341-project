@@ -11,6 +11,7 @@
     <li><a href="/upskill/profile">My Profile</a></li>
     <li>
       <form action="/upskill/logout" method="post">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
         <input type="submit" value="Log Out">
       </form>
     </li>

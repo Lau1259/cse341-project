@@ -28,6 +28,7 @@
         <p class="cart-title"><%= item.courseId.title %></p>
         <form action="./removeFromCart" method="post">
           <input type="hidden" name="itemId" value="<%= item.courseId._id %>">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
           <input type="submit" value="Remove From Cart">
         </form>
         </div>

@@ -9,7 +9,6 @@ module.exports.getHome = (req, res, next) => {
   res.render('pages/project/home', {
     title: "Welcome to UpSkill",
     path: "/upskill/home",
-    isAuthenticated: req.session.isLoggedIn
   });
 };
 
@@ -22,7 +21,6 @@ module.exports.getNewCourse = (req, res, next) => {
   res.render('pages/project/courseForm', {
     title: "New Course | UpSkill",
     path: "/upskill/newCourse",
-    isAuthenticated: req.session.isLoggedIn,
     action: "./addCourse",
     actionText: "Add Course",
     course: {}
@@ -60,7 +58,6 @@ module.exports.getEditCourse = (req, res, next) => {
       res.render('pages/project/courseForm', {
         title: course.title,
         path: "/upskill/newCourse",
-        isAuthenticated: req.session.isLoggedIn,
         action: "../updateCourse",
         actionText: "Save Changes",
         course: course
@@ -114,7 +111,6 @@ module.exports.getCourses = (req, res, next) => {
       res.render('pages/project/courses', {
         title: "Courses | UpSkill",
         path: "/upskill/home",
-        isAuthenticated: req.session.isLoggedIn,
         courses: courses,
         currentUser: req.session.user,
       });
@@ -128,7 +124,6 @@ module.exports.getCourse = (req, res, next) => {
       res.render('pages/project/course-details', {
         title: course.title,
         path: "/upskill/newCourse",
-        isAuthenticated: req.session.isLoggedIn,
         course: course,
         currentUser: req.session.user
       });

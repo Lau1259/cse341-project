@@ -49,6 +49,7 @@
           <label for="body">Review:
             <textarea name="body"></textarea>
           </label>
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
           <input type="submit" value="Add Review">
         </form>
         <% } %>

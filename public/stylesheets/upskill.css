@@ -124,12 +124,12 @@ nav ul a:hover {
   grid-column: 1/2;
 }
 
-.actions-container{
+.actions-container {
   grid-column: 1/-1;
   display: flex;
 }
 
-form{
+form {
   width: 100%;
   height: 100%;
 }
@@ -171,7 +171,7 @@ form{
   align-items: center;
 }
 
-.cart-title{
+.cart-title {
   text-align: center;
 }
 .cart-action {
@@ -186,7 +186,7 @@ form{
   transition: 0.35s;
 }
 
-.cart-container input[type="submit"]{
+.cart-container input[type="submit"] {
   margin: 1em;
   padding: 1em;
   text-decoration: none;
@@ -198,7 +198,7 @@ form{
   color: rgb(209, 101, 0);
   background-color: White;
 }
-.cart-container input[type="submit"]:hover{
+.cart-container input[type="submit"]:hover {
   color: White;
   background-color: rgb(209, 101, 0);
 }
@@ -228,4 +228,26 @@ footer {
 form input,
 form textarea {
   display: block;
+}
+
+/************************************************************
+  Messages
+********************************************************** */
+.message {
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.75em;
+  display: block;
+  padding: 1em;
+  background-color: rgba(250, 250, 250, 0.35);
+}
+
+.error{
+  color: rgb(94, 0, 0);
+  background-color: rgb(250, 160, 160);
+}
+
+.success{
+  color: rgb(8, 94, 0);
+  background-color: rgb(160, 250, 160);
 }

@@ -17,6 +17,12 @@
   </header>
 
   <main>
+    <% if(message && message.length >= 1){ %>
+    <p class="message <%if(msgType){%>
+      <%= msgType %>
+      <% } %>">
+      <%= message %></p>
+    <% } %>
     <form action="login" method="post">
       <label for="email">
         Email:
@@ -26,6 +32,7 @@
         Password:
         <input type="password" name="password">
       </label>
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
       <input type="submit" value="Log In">
     </form>
   </main>
