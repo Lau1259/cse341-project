@@ -1,0 +1,42 @@
+//This code was created from a MQ mixin I had previously made.
+@mixin MQ($breakpoint) {
+  @if $breakpoint == S {
+    @media (max-width: $S) {
+      @content;
+    }
+  } @else if $breakpoint == M {
+    @media only screen and (min-width: $S) {
+      @content;
+    }
+  } @else if $breakpoint == L {
+    @media only screen and (min-width: $L) {
+      @content;
+    }
+  }
+}
+
+@mixin shadow($c, $o, $background: true) {
+  @if $background {
+    background-color: rgba($c, $o);
+  } @else {
+    color: rgba($c, $o);
+  }
+}
+
+@mixin gradient($color) {
+  background: linear-gradient(
+    150deg,
+    scale-color($color, $lightness: -50%) 10%,
+    $color 25%,
+    scale-color($color, $lightness: -35%) 60%,
+    $color
+  );
+}
+
+@mixin hovfoc($bg, $col: $light) {
+  &:hover,
+  &:focus {
+    background: $bg;
+    color: $col;
+  }
+}

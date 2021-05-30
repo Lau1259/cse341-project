@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= title%></title>
-  <link rel="stylesheet" href="../stylesheets/upskill.css">
+  <link rel="stylesheet" href="../../stylesheets/upskill.css">
 </head>
 
 <body>
@@ -19,21 +19,15 @@
       <% } %>">
       <%= message %></p>
     <% } %>
-    <form action="login" method="post">
-      <label for="email">
-        Email:
-        <input type="email" name="email">
+    <form action="../updatePassword" method="post">
+      <label for="newPassword">Enter new password:
+        <input type="password" name="newPassword" required>
       </label>
-      <label for="password">
-        Password:
-        <input type="password" name="password">
-      </label>
+      <input type="hidden" name="userId" value="<%= userId %>">
+      <input type="hidden" name="passwordToken" value="<%= passwordToken %>">
       <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-      <input type="submit" value="Log In">
+      <input type="submit" value="Update Password">
     </form>
-    <div>
-      <a href="./reset">Reset Password</a>
-    </div>
   </main>
   <% include ../../includes/up-footer %>
   <script src="/scripts/base.js"></script>

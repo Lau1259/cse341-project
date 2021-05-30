@@ -1,4 +1,7 @@
 const express = require('express');
+const {
+  check
+} = require('express-validator/check');
 const router = express.Router();
 
 const path = require('path');
@@ -37,16 +40,19 @@ router.use(express.static(path.join(__dirname, 'public')))
   /**********************************************************
    Users
   **********************************************************/
-  .post('/addUser', userController.postAddUser)
-  .get('/newUser', userController.getNewUser)
+  .get('/myProfile', isAuth, userController.getUserInfo)
   /**********************************************************
    Authentication
   **********************************************************/
   .get('/login', authController.getLogin)
   .post('/login', authController.postLogin)
   .get('/register', authController.getRegister)
-  .post('/register', authController.postRegister)
+  .post('/register', check('email').isEmail().withMessage('Please enter a valid Email'), authController.postRegister)
   .post('/logout', authController.postLogout)
+  .get('/reset', authController.getResetPassword)
+  .post('/reset', authController.postResetPassword)
+  .get('/reset/:token', authController.getUpdatePassword)
+  .post('/updatePassword', authController.postUpdatePassword)
   /**********************************************************
    Misc
   **********************************************************/

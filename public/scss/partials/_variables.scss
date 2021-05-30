@@ -1,0 +1,44 @@
+// Message Colors
+$error: hsl(0, 70%, 48%);
+
+$success: hsl(103, 55%, 60%);
+$success-text: hsl(103, 55%, 10%);
+
+$info: hsl(236, 48%, 45%);
+
+
+
+// Base Colors
+$primary: hsl(0,0%,10%);
+
+// Site Accents
+$accent1: hsl(41, 100%, 50%);
+$accent1-100: scale-color($accent1, $lightness: -10%);
+$accent1-200: scale-color($accent1, $lightness: -20%);
+$accent1-300: scale-color($accent1, $lightness: -30%);
+$accent1-400: scale-color($accent1, $lightness: -40%);
+$accent1-500: scale-color($accent1, $lightness: -50%);
+$accent1-600: scale-color($accent1, $lightness: -60%);
+$accent1-700: scale-color($accent1, $lightness: -70%);
+
+// Shades
+$dark: hsl(0, 0%, 20%);
+$dark-100: scale-color($dark, $lightness: 10%);
+$dark-200: scale-color($dark, $lightness: 20%);
+$dark-300: scale-color($dark, $lightness: 30%);
+$dark-400: scale-color($dark, $lightness: 40%);
+$dark-500: scale-color($dark, $lightness: 50%);
+
+// Tints
+$light: hsl(0,0%,100%);
+$light-100: scale-color($light, $lightness: -10%);
+$light-200: scale-color($light, $lightness: -20%);
+$light-300: scale-color($light, $lightness: -30%);
+$light-400: scale-color($light, $lightness: -40%);
+$light-500: scale-color($light, $lightness: -50%);
+
+// Breakpoints
+$L: 62em;
+$S: 42em;
+
+// FONTS ARE IN THE TYPOGRAPHY PARTIAL

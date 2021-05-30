@@ -1,0 +1,23 @@
+.removeDef {
+  border: none;
+  background-color: transparent;
+}
+
+img {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.hidden {
+  display: none;
+  @include MQ(L) {
+    display: inherit;
+  }
+}
+
+.navToggleBtn {
+  width: 100%;
+  @include MQ(L) {
+    display: none;
+  }
+}

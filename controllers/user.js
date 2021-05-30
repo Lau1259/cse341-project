@@ -1,27 +1,17 @@
 const Mongoose = require('mongoose');
-const Course = require('../model/courses');
+const User = require('../model/users');
+
 
 /**********************************************************
  User Logic
 **********************************************************/
-
-module.exports.getNewUser = (req, res, next) => {
-  res.render('pages/project/newUser', {
-    title: "New User | UpSkill",
-    path: "/upskill/newUser",
-  });
-};
-
-module.exports.getEditUser = (req, res, next) => {
-  res.render('pages/project/editUser', {
-    title: "Edit User | UpSkill",
-    path: "/upskill/editUser",
-  });
-};
-
-module.exports.postAddUser = (req, res, next) => {
-  res.render('pages/project/newUser', {
-    title: "New Course | UpSkill",
-    path: "/upskill/newUser",
+module.exports.getUserInfo = (req, res, next) => {
+  let user = req.user;
+  res.render('pages/project/userInfo', {
+    title: `${req.user.firstName} ${req.user.lastName} | UpSkill`,
+    path: "/upskill/userInfor",
+    action: "./updateUser",
+    currentUser: user,
+    courses: user.courseList.items
   });
 };

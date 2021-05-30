@@ -10,13 +10,15 @@
 </head>
 
 <body>
-  <header>
-    <p class="title"><a href="/upskill">UpSkill | Become Greater</a></p>
-    <% include ../../includes/up-nav %>
-
-  </header>
+  <% include ../../includes/up-header %>
 
   <main>
+    <% if(message && message.length >= 1){ %>
+    <p class="message <%if(msgType){%>
+        <%= msgType %>
+        <% } %>">
+      <%= message %></p>
+    <% } %>
     <form action="register" method="post">
       <label for="firstName">
         First Name:
@@ -42,8 +44,8 @@
       <input type="submit" value="Sign Up">
     </form>
   </main>
-  <footer>
-    <% include ../../includes/up-footer %>
+  <% include ../../includes/up-footer %>
+  <script src="/scripts/base.js"></script>
 </body>
 
 </html>

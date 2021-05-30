@@ -25,12 +25,13 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
+  resetToken:  String,
+  resetTokenExp: Date,
   privilege: {
     type: Number,
     required: false,
     default: 1
   },
-  // I need to add items to make a list of items
   cart: {
     items: [{
       courseId: {
@@ -57,7 +58,7 @@ userSchema.methods.clearCart = function () {
 }
 
 userSchema.methods.purchaseCart = function () {
-  this.courseList.items = [...this.courseList.items,...this.cart.items];
+  this.courseList.items = [...this.courseList.items, ...this.cart.items];
   console.log(this.courseList.items);
   this.cart.items = [];
   console.log(`Cart: ${this.cart.items}`);
@@ -96,6 +97,14 @@ userSchema.methods.addToCart = function (course) {
   };
   this.cart = updatedCart;
   return this.save();
+}
+
+userSchema.methods.updateUserInfo = function (firstName, lastName, userName, email) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.userName = userName;
+  this.email = email;
+  return this.save()
 }
 
 module.exports = mongoose.model('User', userSchema);

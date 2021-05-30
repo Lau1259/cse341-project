@@ -32,7 +32,7 @@ module.exports.postAddCourse = (req, res, next) => {
   const price = req.body.price;
   const desc = req.body.description;
   const imgUrl = req.body.imgUrl;
-  const instructor = req.body.instructor;
+  const instructor = req.user._id;
   const newCourse = new Course({
     title: title,
     price: price,
@@ -55,6 +55,7 @@ module.exports.getEditCourse = (req, res, next) => {
   const courseId = req.body.courseId;
   Course.findById(courseId)
     .then(course => {
+      console.log(course);
       res.render('pages/project/courseForm', {
         title: course.title,
         path: "/upskill/newCourse",
@@ -86,7 +87,7 @@ module.exports.postUpdateCourse = (req, res, next) => {
   const newPrice = req.body.price;
   const newDesc = req.body.description;
   const newImgUrl = req.body.imgUrl;
-  const newInstructor = req.body.instructor;
+  const newInstructor = req.user._id;
   Course.findById(courseId)
     .then(c => {
       c.title = newTitle;
@@ -107,6 +108,7 @@ module.exports.postUpdateCourse = (req, res, next) => {
 
 module.exports.getCourses = (req, res, next) => {
   Course.find()
+    .populate('instructor', '_id firstName lastName')
     .then(courses => {
       res.render('pages/project/courses', {
         title: "Courses | UpSkill",
@@ -119,13 +121,16 @@ module.exports.getCourses = (req, res, next) => {
 
 module.exports.getCourse = (req, res, next) => {
   const courseId = req.body.courseId;
+  const owned = req.body.owned ? req.body.owned : false;
   Course.findById(courseId)
+  .populate('instructor', '_id firstName lastName')
     .then(course => {
       res.render('pages/project/course-details', {
         title: course.title,
-        path: "/upskill/newCourse",
-        course: course,
-        currentUser: req.session.user
+        path: "/upskill/course",
+        c: course,
+        currentUser: req.session.user,
+        owned: owned
       });
     })
 };

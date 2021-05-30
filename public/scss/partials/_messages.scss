@@ -1,0 +1,21 @@
+/************************************************************
+  Messages
+********************************************************** */
+.message {
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.75em;
+  display: block;
+  padding: 1em;
+  background-color: rgba(250, 250, 250, 0.35);
+}
+
+.error {
+  color: $light;
+  background-color: $error;
+}
+
+.success {
+  color: rgb(8, 94, 0);
+  background-color: rgb(160, 250, 160);
+}

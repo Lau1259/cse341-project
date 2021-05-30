@@ -1,0 +1,51 @@
+.action {
+  display: block;
+  max-width: 55%;
+  margin: 1em auto;
+  @include gradient($accent1);
+  // background: linear-gradient(
+  //   150deg,
+  //   $accent1-500 10%,
+  //   $accent1 25%,
+  //   $accent1-300 60%,
+  //   $accent1
+  // );
+  padding: 1em;
+  text-decoration: none;
+  text-align: center;
+  font-family: $headings;
+  font-weight: 800;
+  color: $dark;
+  border-radius: 2em;
+  transition: 0.5s;
+  &:hover {
+    color: $accent1-700;
+    transform: scale(1.05);
+    transition: 0.5s;
+  }
+}
+
+.option {
+  @include gradient($dark);
+  padding: 0.5em;
+  color: $light;
+  display: block;
+  transition: 0.25s ease;
+  cursor: pointer;
+}
+
+.info {
+  @include hovfoc($accent1, $dark);
+}
+
+.addCart {
+  @include hovfoc($success, $dark);
+}
+
+.edit {
+  @include hovfoc($info);
+}
+
+.delete {
+  @include hovfoc($error);
+}

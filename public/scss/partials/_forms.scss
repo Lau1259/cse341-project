@@ -1,0 +1,35 @@
+form {
+  @include MQ(S) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  display: block;
+  label {
+    display: block;
+    margin-bottom: 0.5em;
+  }
+  input,
+  textarea {
+    display: block;
+    width: 100%;
+    font-size: 1.1rem;
+    padding: 0.25em;
+    @include shadow($light-100, 0.5);
+    &:focus-within,
+    &:focus {
+      background: $light;
+    }
+  }
+  input:required {
+    border-left: $error solid 0.25em;
+  }
+  //Label font settings in typography
+}
+
+.btn {
+  appearance: none;
+  margin: 1em 0em;
+}
+
+

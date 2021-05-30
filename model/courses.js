@@ -8,8 +8,9 @@ const courseSchema = new Schema({
     required: true
   },
   instructor: {
-    type: String,
-    required: true
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: 'User'
   },
   price: {
     type: Number,

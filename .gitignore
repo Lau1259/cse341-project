@@ -7,6 +7,9 @@ npm-debug.log
 *.dev
 .DS_Store
 
+#Backup Files
+public/stylesheets/*-bk.css
+
 # Docker
 Dockerfile
 docker-compose.yml

@@ -12,28 +12,39 @@
 <body>
 
   <body>
-    <header>
-      <p class="title"><a href="/upskill">UpSkill | Become Greater</a></p>
-      <% include ../../includes/up-nav %>
-    </header>
+    <% include ../../includes/up-header %>
 
 
     <main>
-      <section class="course-container">
-        <p class="c-title"><%= course.title %></p>
-        <figure class="c-img">
-          <img src="../<%= course.imgUrl %>" alt="<%= course.title %>">
-        </figure>
-        <div class="c-info">
-          <p class="c-instructor">Instructor: <%= course.instructor %></p>
-          <p class="c-description"><%= course.description %></p>
-          <p class="c-price">$<%= course.price %></p>
+      <section class="course-details">
+        <div class="detail-header">
+          <p class="detail-title"><%= c.title %>
+            <span class="detail-instructor">as taught by
+              <%= c.instructor.firstName + " " + c.instructor.lastName %></span>
+          </p>
+          <figure class="detail-img">
+            <img src="../<%= c.imgUrl %>" alt="<%= c.title %>">
+          </figure>
         </div>
+        <p class="detail-description"><%= c.description %></p>
+        <% if(owned){ %>
+        <div class="owned-info">
+          <form action="./course/lessons" method="post">
+            <input type="hidden" name="courseId" value="<%= c.courseId %>">
+            <input type="submit" value="Start Course" class="option info" disabled>
+          </form>
+        </div>
+        <% } else { %>
+        <div class="detail-info">
+          <% include ../../includes/up-actions %>
+          <p class="detail-price">Price: $<%= c.price %></p>
+        </div>
+        <% } %>
       </section>
       <section class="reviews">
         <h1>Reviews:</h1>
-        <% if(course.reviews.length >= 1){
-          course.reviews.forEach(r=>{ %>
+        <% if(c.reviews.length >= 1){
+          c.reviews.forEach(r=>{ %>
         <p class="r-title"><%= r.title %></p>
         <p class="r-user"><%= r.user %></p>
         <p class="r-body"><%= r.body %></p>
@@ -43,9 +54,7 @@
           <label for="title">Title:
             <input type="text" name="title">
           </label>
-          <input type="hidden" name="userId" <% if(currentUser){ %>
-             value=<%= currentUser._id %>
-            <% } %>>
+          <input type="hidden" name="userId" <% if(currentUser){ %> value=<%= currentUser._id %> <% } %>>
           <label for="body">Review:
             <textarea name="body"></textarea>
           </label>
@@ -56,6 +65,7 @@
       </section>
     </main>
     <% include ../../includes/up-footer %>
+    <script src="/scripts/base.js"></script>
   </body>
 
 </html>

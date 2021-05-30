@@ -12,10 +12,7 @@
 <body>
 
   <body>
-    <header>
-      <p class="title"><a href="/upskill">UpSkill | Become Greater</a></p>
-      <% include ../../includes/up-nav %>
-    </header>
+    <% include ../../includes/up-header %>
 
     <main>
       <section class="courses-container">
@@ -27,44 +24,17 @@
           </figure>
           <div class="c-info">
             <p class="c-title"><%= c.title %></p>
-            <p class="c-instructor">by <%= c.instructor %></p>
+            <p class="c-instructor">by <%= c.instructor.firstName%> <%= c.instructor.lastName %></p>
             <p class="c-price">$<%= c.price %></p>
           </div>
-          <div class="actions-container">
-            <!-- The next 2 form will eventually only be visible by admins -->
-            <% if(currentUser && currentUser.privilege >1){ %>
-            <form action="./editCourse/" method="post">
-              <input type="hidden" name="courseId" value="<%= c.id  %>">
-              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-              <input type="submit" value="Edit Course">
-            </form>
-            <form action="./deleteCourse/" method="post">
-              <input type="hidden" name="courseId" value="<%= c.id  %>">
-              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-              <input type="submit" value="Delete Course">
-            </form>
-            <% } %>
-            <!-- This is to view course details -->
-            <form action="./course/" method="post">
-              <input type="hidden" name="courseId" value="<%= c.id  %>">
-              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-              <input type="submit" value="More Info">
-            </form>
-            <% if(isAuthenticated){ %>
-            <!-- This is to Add a course to the cart -->
-            <form action="/upskill/addToCart" method="post">
-              <input type="hidden" name="courseId" value="<%= c.id  %>">
-              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-              <input type="submit" value="Add To Cart">
-            </form>
-            <% } %>
-          </div>
+          <% include ../../includes/up-actions %>
         </div>
         <% }); %>
         </div>
       </section>
     </main>
     <% include ../../includes/up-footer %>
+    <script src="/scripts/base.js"></script>
   </body>
 
 </html>

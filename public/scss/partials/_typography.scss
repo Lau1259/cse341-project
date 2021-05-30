@@ -1,0 +1,64 @@
+// Import Google fonts
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Pattaya&display=swap");
+
+//Set font variables
+$headings: "Pattaya", sans-serif;
+$body-copy: "Montserrat", sans-serif;
+
+body {
+  font-family: $body-copy;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.navLink {
+  font-family: $headings;
+}
+
+.navLink {
+  font-size: 1.25rem;
+}
+
+label {
+  color: $accent1;
+  font-family: $headings;
+}
+
+.intro h2 {
+  @include gradient($accent1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.c-title,
+.detail-title {
+  font-family: $headings;
+  font-size: 1.5em;
+}
+
+.c-instructor {
+  font-size: 0.75em;
+  font-weight: lighter;
+}
+
+.detail-title{
+  text-align: center;
+}
+
+.detail-instructor{
+  display: block;
+  font-family: $body-copy;
+  font-size: 0.5em;
+}
+
+.detail-price {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: $success;
+  text-align: center;
+}

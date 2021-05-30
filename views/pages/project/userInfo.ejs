@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title%> | UpSkill</title>
+  <link rel="stylesheet" href="/stylesheets/upskill.css">
+</head>
+
+<body>
+
+  <body>
+    <% include ../../includes/up-header %>
+
+    <main>
+      <h1><%= title%></h1>
+      <form action="<%= action %>" method="post">
+        <fieldset>
+          <legend>User Data</legend>
+          <label for="firstName">First Name:
+            <input type="text" name="firstName" id="firstName" value="<%= currentUser.firstName %>">
+          </label>
+          <label for="lastName">Last Name:
+            <input type="text" name="lastName" id="lastName" value="<%= currentUser.lastName %>">
+          </label>
+          <label for="userName">User Name:
+            <input type="text" name="userName" id="userName" value="<%= currentUser.userName %>">
+          </label>
+          <label for="email">Email:
+            <input type="text" name="email" id="email" value="<%= currentUser.email %>">
+          </label>
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <input type="submit" value="Update Info">
+        </fieldset>
+      </form>
+      <section>
+        <h2>Change Password</h2>
+        <a href="./reset" class="action">Reset Password</a>
+      </section>
+      <section class="courses-container">
+        <h2>My Courses</h2>
+        <% courses.forEach(c=>{ %>
+        <div class="course">
+          <figure class="c-img">
+            <img src="<%= c.courseId.imgUrl %>" alt="<%= c.courseId.title %>">
+          </figure>
+          <div class="c-info">
+            <p class="c-title"><%= c.courseId.title %></p>
+            <p class="c-instructor">by <%= c.courseId.instructor %></p>
+          </div>
+          <div class="actions-container">
+            <!-- This is to view course details -->
+            <form action="./course/" method="post">
+              <input type="hidden" name="courseId" value="<%= c.courseId.id  %>">
+              <input type="hidden" name="owned" value="true">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+              <input type="submit" value="Go to Course" class="option info">
+            </form>
+          </div>
+        </div>
+        <% }); %>
+        </div>
+      </section>
+    </main>
+    <% include ../../includes/up-footer %>
+    <script src="/scripts/base.js"></script>
+  </body>
+
+</html>

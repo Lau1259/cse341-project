@@ -73,6 +73,15 @@ app.use((req, res, next) => {
         }
       }
     })
+    .populate({
+      path: 'courseList',
+      populate: {
+        path: 'items',
+        populate: {
+          path: 'courseId'
+        }
+      }
+    })
     .then(user => {
       req.user = user;
       next();

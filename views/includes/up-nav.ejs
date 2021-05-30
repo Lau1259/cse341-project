@@ -1,23 +1,23 @@
-<nav>
+<nav id="primaryNav" class="hidden">
   <ul>
-    <li><a href="/upskill/courses">Courses</a></li>
+    <li class="navLink"><a href="/upskill/courses">Courses</a></li>
     <% if(isAuthenticated){ %>
-    <li><a href="/upskill/cart">My Cart</a></li>
-    <li><a href="/upskill/newCourse">Add a New Course</a></li>
+    <li class="navLink"><a href="/upskill/cart">My Cart</a></li>
+    <li class="navLink"><a href="/upskill/newCourse">Add a New Course</a></li>
     <% } %>
   </ul>
   <ul class="authentication">
     <% if(isAuthenticated){ %>
-    <li><a href="/upskill/profile">My Profile</a></li>
-    <li>
+    <li class="navLink"><a href="/upskill/myProfile">My Profile</a></li>
+    <li class="navLink">
       <form action="/upskill/logout" method="post">
         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-        <input type="submit" value="Log Out">
+        <input type="submit" value="Log Out" class="navLink removeDef">
       </form>
     </li>
     <% } else { %>
-    <li><a href="/upskill/login">Log in</a></li>
-    <li><a href="/upskill/register">Sign Up</a></li>
+    <li class="navLink"><a href="/upskill/login">Log in</a></li>
+    <li class="navLink"><a href="/upskill/register">Sign Up</a></li>
     <% } %>
   </ul>
 </nav>

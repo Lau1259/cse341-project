@@ -1,0 +1,161 @@
+@import "partials/reset";
+@import "partials/variables";
+@import "partials/mixins";
+@import "partials/helpers";
+@import "partials/typography";
+@import "partials/buttons";
+@import "partials/messages";
+@import "partials/forms";
+@import "partials/courses";
+
+body {
+  background-color: $primary;
+}
+main {
+  @include shadow($light-500, 0.35);
+  color: #dfdfdd;
+  padding: 1.25em;
+  min-height: 85vh;
+  font-size: 18pt;
+  width: 90vw;
+  margin: 0 auto;
+  @include MQ(M) {
+    max-width: 1000px;
+  }
+}
+header {
+  display: grid;
+  @include MQ(L) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  padding: 0em 2em;
+  a {
+    text-decoration: none;
+  }
+  nav {
+    grid-column: 3/-1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include MQ(S) {
+      grid-column: 1;
+    }
+    ul {
+      list-style-type: none;
+      display: flex;
+      @include MQ(S) {
+        flex-direction: column;
+      }
+      justify-items: center;
+      margin: 0;
+      padding: 0;
+    }
+  }
+  .title {
+    grid-column: 1/3;
+    display: grid;
+    grid-template-columns: 11fr 1fr;
+    @include MQ(S) {
+      grid-column: 1;
+      width: 100%;
+    }
+    font-size: 1.25em;
+    margin-right: 1em;
+    a {
+      display: block;
+      color: White;
+      background-color: black;
+      padding: 1em;
+      box-sizing: border-box;
+    }
+  }
+}
+
+.navLink a,
+.navLink input {
+  display: block;
+  padding: 0.5em;
+  color: rgb(0, 0, 0);
+  &:hover {
+    color: white;
+    background-color: black;
+  }
+}
+
+.authentication {
+  grid-column: 4;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.intro {
+  text-align: center;
+}
+
+.cart-container {
+  align-items: center;
+  justify-items: center;
+}
+
+.choices {
+  grid-column: 1/-1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-title {
+  text-align: center;
+}
+.cart-action {
+  margin: 1em;
+  background-color: $accent1;
+  padding: 1em;
+  text-decoration: none;
+  text-align: center;
+  color: White;
+  font-weight: 800;
+  border-radius: 2em;
+  transition: 0.35s;
+}
+
+.cart-container input[type="submit"] {
+  margin: 1em;
+  padding: 1em;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 800;
+  border-radius: 2em;
+  transition: 0.35s;
+  border: none;
+  color: $accent1;
+  background-color: White;
+}
+.cart-container input[type="submit"]:hover {
+  color: White;
+  background-color: $accent1;
+}
+
+footer {
+  display: grid;
+  grid-gap: 1.5em;
+  padding: 2em;
+  @include MQ(M) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+footer aside {
+  background-color: rgba(250, 250, 250, 0.75);
+  padding: 1.5em;
+  border-radius: 1.25em;
+}
+
+aside ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+header,
+footer {
+  background-color: $accent1-300;
+}
