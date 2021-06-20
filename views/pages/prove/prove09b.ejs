@@ -21,17 +21,17 @@
       </div>
       <div class="row justify-content-center m-0 p-0">
         <% if(page != 1) { %>
-        <a href="http://localhost:3000/prove/09/pokemon/1"><button class="btn btn-secondary m-2">First</button></a>
-        <a href="http://localhost:3000/prove/09/pokemon/<%=parseInt(page) - 1%>"><button
+        <a href="./prove/09/pokemon/1"><button class="btn btn-secondary m-2">First</button></a>
+        <a href="./prove/09/pokemon/<%=parseInt(page) - 1%>"><button
             class="btn btn-secondary m-2">Previous</button></a>
         <% } %>
 
         <button class="btn btn-primary m-2"><%=page%></button>
 
         <% if(page != 112) { %>
-        <a href="http://localhost:3000/prove/09/pokemon/<%=parseInt(page) + 1%>"><button
+        <a href="./prove/09/pokemon/<%=parseInt(page) + 1%>"><button
             class="btn btn-secondary m-2">Next</button></a>
-        <a href="http://localhost:3000/prove/09/pokemon/112"><button class="btn btn-secondary m-2">Last</button></a>
+        <a href="./prove/09/pokemon/112"><button class="btn btn-secondary m-2">Last</button></a>
         <% } %>
       </div>
     </div>
