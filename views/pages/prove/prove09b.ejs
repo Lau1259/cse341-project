@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <% include ../../includes/header.ejs %>
+  <link rel="stylesheet" href="/stylesheets/main.css">
+  <link rel="stylesheet" href="/stylesheets/pokemon.css">
+</head>
+
+<body>
+  <% include ../../includes/nav.ejs %>
+  <main>
+    <div class="container">
+      <h1>Pokemon List:</h1>
+      <div class="poke-list">
+        <% pokemonList.forEach((pokemon) =>{ %>
+        <div class="pokemon-container">
+          <p> <%= pokemon.name %></p>
+        </div>
+        <% }); %>
+      </div>
+      <div class="row justify-content-center m-0 p-0">
+        <% if(page != 1) { %>
+        <a href="http://localhost:3000/prove/09/pokemon/1"><button class="btn btn-secondary m-2">First</button></a>
+        <a href="http://localhost:3000/prove/09/pokemon/<%=parseInt(page) - 1%>"><button
+            class="btn btn-secondary m-2">Previous</button></a>
+        <% } %>
+
+        <button class="btn btn-primary m-2"><%=page%></button>
+
+        <% if(page != 112) { %>
+        <a href="http://localhost:3000/prove/09/pokemon/<%=parseInt(page) + 1%>"><button
+            class="btn btn-secondary m-2">Next</button></a>
+        <a href="http://localhost:3000/prove/09/pokemon/112"><button class="btn btn-secondary m-2">Last</button></a>
+        <% } %>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>

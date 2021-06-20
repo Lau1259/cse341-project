@@ -1,0 +1,18 @@
+@import "partials/pokeVars";
+
+.pokemon-container {
+  background-color: $poke1;
+  color: $pokeText;
+  padding: 2em;
+  border-radius: 1.25em;
+  margin-bottom: 0.5em;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.poke-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1em;
+  text-align: center;
+}
