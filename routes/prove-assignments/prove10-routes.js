@@ -1,9 +1,10 @@
 const express = require('express');
+const path = require('path');
 const router = express.Router();
 const fetch = require('node-fetch');
 
 // Path to your JSON file, although it can be hardcoded in this file.
-const dummyData = require('../../data/heroes.json')
+const dummyData = require(path.join(__dirname, '..','..','data','heroes.json'))
 
 router.get('/fetchAll', (req, res, next) => {
   res.json(dummyData)
