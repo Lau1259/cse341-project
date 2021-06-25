@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Pattaya&display=swap");
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.navLink {
+  font-family: "Pattaya", sans-serif;
+}
+
+.navLink {
+  font-size: 1.25rem;
+}
+
+label {
+  color: #ffae00;
+  font-family: "Pattaya", sans-serif;
+}
+
+.intro h2 {
+  background: linear-gradient(150deg, #805700 10%, #ffae00 25%, #a67100 60%, #ffae00);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.c-title,
+.detail-title {
+  font-family: "Pattaya", sans-serif;
+  font-size: 1.5em;
+}
+
+.c-instructor {
+  font-size: 0.75em;
+  font-weight: lighter;
+}
+
+.detail-title {
+  text-align: center;
+}
+
+.detail-instructor {
+  display: block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.5em;
+}
+
+.detail-price {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #81d161;
+  text-align: center;
+}
+
+.heroList {
+  padding: 0;
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
+}
+
+.hero-container {
+  border: solid 2px #333333;
+  padding: 1em;
+  border-radius: 0.25em;
+  text-align: center;
+  font-size: 2em;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.ironMan {
+  background: linear-gradient(150deg, #530000 10%, #a50000 25%, #6b0000 60%, #a50000);
+  color: #dfa21e;
+}
+
+.captain {
+  background: linear-gradient(150deg, #19345f 10%, #3268bd 25%, #21447b 60%, #3268bd);
+}
+
+.thor {
+  background: linear-gradient(150deg, #70510f 10%, #dfa21e 25%, #916914 60%, #dfa21e);
+  color: #313131;
+}
+
+.hulk {
+  background: linear-gradient(150deg, #004d10 10%, #00991f 25%, #006314 60%, #00991f);
+  color: #460061;
+}
+
+.widow {
+  background: linear-gradient(150deg, #191919 10%, #313131 25%, #202020 60%, #313131);
+  color: red;
+}
+
+.hawkeye {
+  background: linear-gradient(150deg, #230031 10%, #460061 25%, #2e003f 60%, #460061);
+  color: #dfa21e;
+}
+
+.wakanda {
+  background: linear-gradient(150deg, #191919 10%, #313131 25%, #202020 60%, #313131);
+  color: #d15aff;
+  text-shadow: #c631ff 0px 0px 20px;
+}
+
+.asgard {
+  background: linear-gradient(150deg, #70510f 10%, #dfa21e 25%, #916914 60%, #dfa21e);
+  color: #285c33;
+}
+
+.shield {
+  color: #3268bd;
+}
+
+label {
+  color: #333333;
+}
+
+/*# sourceMappingURL=heroes.css.map */

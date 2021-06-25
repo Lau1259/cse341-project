@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <% include ../../includes/header.ejs %>
+  <link rel="stylesheet" href="/stylesheets/main.css">
+  <link rel="stylesheet" href="/stylesheets/heroes.css">
+</head>
+
+<body>
+  <% include ../../includes/nav.ejs %>
+  <main>
+    <div class="container">
+      <h1>Avengers:</h1>
+      <ul id="heroList" class="heroList">
+        <% heroes.forEach(hero=> { %>
+        <li class="hero-container"><%= hero.name %></li>
+        <% }) %>
+      </ul>
+      <h2>Add a hero:</h2>
+      <div class="actions">
+        <label for="newName">Hero Name:
+          <input type="text" id="newName" name="newName">
+        </label>
+        <label for="realName">Secret Identity:
+          <input type="text" id="realName" name="realName">
+        </label>
+        <label for="heroStyle">Chose a Style:</label>
+        <select name="heroStyle" id="heroStyle">
+          <option value="hero-container">Default</option>
+          <option value="wakanda">Wakanda</option>
+          <option value="asgard">Asgard</option>
+          <option value="shield">S.H.I.E.L.D.</option>
+        </select>
+        <input type="hidden" name="_csrf" id="_csrf" value="<%= csrfToken %>">
+        <button id="submitHero" onclick="addHero()">Add Hero</button>
+      </div>
+    </div>
+    <script src="/scripts/heroClient.js"></script>
+  </main>
+</body>
+
+</html>

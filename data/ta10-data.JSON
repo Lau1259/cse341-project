@@ -1,0 +1,39 @@
+{
+  "avengers": [{
+      "name": "Iron Man",
+      "secret_identity": "Tony Stark",
+      "class": "ironMan",
+      "id": "ogAvenger-001"
+    },
+    {
+      "name": "Captain America",
+      "secret_identity": "Steve Rogers",
+      "class": "captain",
+      "id": "ogAvenger-002"
+    },
+    {
+      "name": "Thor",
+      "secret_identity": "Thor Odinson",
+      "class": "thor",
+      "id": "ogAvenger-003"
+    },
+    {
+      "name": "The Incredible Hulk",
+      "secret_identity": "Bruce Banner",
+      "class": "hulk",
+      "id": "ogAvenger-004"
+    },
+    {
+      "name": "Black Widow",
+      "secret_identity": "Natasha Romanov",
+      "class": "widow",
+      "id": "ogAvenger-005"
+    },
+    {
+      "name": "Hawkeye",
+      "secret_identity": "Clint Barton",
+      "class": "hawkeye",
+      "id": "ogAvenger-006"
+    }
+  ]
+}

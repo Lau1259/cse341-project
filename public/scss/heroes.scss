@@ -1,0 +1,70 @@
+@import 'partials/variables';
+@import 'partials/mixins';
+@import 'partials/typography';
+
+// Avemgers colors
+$red:	rgb(165,0,0);
+$blue: rgb(50,104,189);
+$gold: rgb(223, 162, 30);
+$green: rgb(0,153,31);
+$gray: rgb(153,153,153);
+$purple: rgb(70,0,97);
+$black: rgb(49, 49, 49);
+
+.heroList{
+  padding: 0;
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
+}
+
+.hero-container{
+  border: solid 2px $dark;
+  padding: 1em;
+  border-radius: 0.25em;
+  text-align: center;
+  font-size: 2em;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.ironMan{
+  @include gradient($red);
+  color: $gold;
+}
+.captain{
+  @include gradient($blue);
+}
+.thor{
+  @include gradient($gold);
+  color: $black;
+}
+.hulk{
+  @include gradient($green);
+  color: $purple;
+}
+.widow{
+  @include gradient($black);
+  color: red;
+}
+.hawkeye{
+  @include gradient($purple);
+  color: $gold;
+}
+.wakanda{
+  @include gradient($black);
+  color: scale-color($purple, $lightness: 60%);
+  text-shadow: scale-color($purple, $lightness: 50%) 0px 0px 20px;
+}
+.asgard{
+  @include gradient($gold);
+  color: rgb(40, 92, 51);
+}
+.shield{
+  color: $blue;
+}
+label{
+  color: $dark;
+}
