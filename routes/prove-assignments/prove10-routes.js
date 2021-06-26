@@ -1,13 +1,17 @@
 const express = require('express');
+const fs = require('fs');
 const path = require('path');
 const router = express.Router();
 const fetch = require('node-fetch');
 
 // Path to your JSON file, although it can be hardcoded in this file.
-const dummyData = require(path.join(__dirname, '..','..','data','heroes.json'))
+const dataPath = path.join(__dirname,"..","..","data","heroes.json");
+let dummyData = fs.readFileSync(dataPath, "utf-8");
+
+let heroes = JSON.parse(dummyData);
 
 router.get('/fetchAll', (req, res, next) => {
-  res.json(dummyData)
+  res.json(heroes)
 })
 
 router.post('/insert', (req, res, next) => {
@@ -22,8 +26,8 @@ router.post('/insert', (req, res, next) => {
     const heroId = req.body.heroId
 
     // Make our submissions somewhat unique.
-    if (!dummyData.avengers.some(a => a.name === newName)) {
-      dummyData.avengers.push({
+    if (!heroes.avengers.some(a => a.name === newName)) {
+      heroes.avengers.push({
         name: newName,
         secret_identity: realName,
         class: heroStyle,
@@ -38,7 +42,7 @@ router.post('/insert', (req, res, next) => {
 
 router.post('/delete', (req, res, next) => {
   if (req.body.heroId !== undefined) {
-    dummyData.avengers = dummyData.avengers.filter(hero => {
+    heroes.avengers = heroes.avengers.filter(hero => {
       return hero.id !== req.body.heroId;
     });
     // console.log(dummyData.avengers);

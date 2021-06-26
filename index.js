@@ -46,7 +46,7 @@ const csrfProtection = csrf();
  Route Set Up
 **********************************************************/
 
-app.use(bodyParser({
+app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(bodyParser.json());

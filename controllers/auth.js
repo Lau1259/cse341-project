@@ -15,7 +15,7 @@ const transporter = nodemailer.createTransport(sendgridTransport({
 const User = require('../model/users');
 const {
   validationResult
-} = require('express-validator/check')
+} = require('express-validator')
 
 /**********************************************************
  Login Logic
