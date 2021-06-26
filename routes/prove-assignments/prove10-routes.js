@@ -53,7 +53,7 @@ router.post('/delete', (req, res, next) => {
 });
 
 router.get('/', (req, res, next) => {
-  let url = 'http://localhost:3000/prove/10/fetchall';
+  let url = `http://${req.headers.host}/prove/10/fetchall`;
   console.log(url);
   fetch(url)
     .then(response => response.json())
