@@ -5,10 +5,12 @@ const router = express.Router();
 const fetch = require('node-fetch');
 
 // Path to your JSON file, although it can be hardcoded in this file.
-const dataPath = path.join(__dirname,"..","..","data","heroList.json");
+const dataPath = path.join(__dirname, "..", "..", "data", "heroList.json");
 let dummyData = fs.readFileSync(dataPath, "utf-8");
 
-let heroes = JSON.parse(dummyData);
+let heroes;
+if(!heroes) heroes = JSON.parse(dummyData);
+
 
 router.get('/fetchAll', (req, res, next) => {
   res.json(heroes)
@@ -32,7 +34,8 @@ router.post('/insert', (req, res, next) => {
         secret_identity: realName,
         class: heroStyle,
         id: heroId
-      }) // Push new object into the dummyData
+      })
+      console.log(heroes.avengers);
       res.sendStatus(200)
     }
   } else {
@@ -45,8 +48,20 @@ router.post('/delete', (req, res, next) => {
     heroes.avengers = heroes.avengers.filter(hero => {
       return hero.id !== req.body.heroId;
     });
-    // console.log(dummyData.avengers);
+    // console.log(heroes.avengers);
     res.sendStatus(200)
+  } else {
+    res.sendStatus(400) // Bad request error code
+  }
+});
+
+router.post('/info', (req, res, next) => {
+  if (req.body.heroId !== undefined) {
+    let details = heroes.avengers.filter(hero => {
+      return hero.id === req.body.heroId;
+    })[0];
+    console.log(details)
+    res.json(details);
   } else {
     res.sendStatus(400) // Bad request error code
   }
