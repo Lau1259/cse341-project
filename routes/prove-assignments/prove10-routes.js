@@ -5,7 +5,7 @@ const router = express.Router();
 const fetch = require('node-fetch');
 
 // Path to your JSON file, although it can be hardcoded in this file.
-const dataPath = path.join(__dirname,"..","..","data","heroes.json");
+const dataPath = path.join(__dirname,"..","..","data","heroList.json");
 let dummyData = fs.readFileSync(dataPath, "utf-8");
 
 let heroes = JSON.parse(dummyData);
