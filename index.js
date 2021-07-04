@@ -14,6 +14,9 @@ const flash = require('connect-flash');
 const app = express();
 const User = require('./model/users');
 const routes = require('./routes/master-routes');
+const {
+  log
+} = require('console');
 
 /**********************************************************
  Variables
@@ -118,7 +121,20 @@ mongoose
     MONGODB_URL, options
   )
   .then(result => {
-    app.listen(PORT);
+    const server = app.listen(PORT);
+    const io = require('socket.io')(server)
+
+    io.on('connection', (socket) => {
+      // I update the list when heroes are added or removed from the list.
+      socket.on('new-hero', () => {
+        socket.broadcast.emit('update-list');
+      });
+      socket.on('remove-hero', (id) => {
+        socket.broadcast.emit('update-list');
+      });
+    });
+
+
   })
   .catch(err => {
     console.log(err);

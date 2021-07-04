@@ -68,15 +68,14 @@ router.post('/info', (req, res, next) => {
 });
 
 router.get('/', (req, res, next) => {
-  let url = `http://${req.headers.host}/prove/10/fetchall`;
-  console.log(url);
+  let url = `http://${req.headers.host}/prove/11/fetchall`;
   fetch(url)
     .then(response => response.json())
     .then(data => {
       const heroes = data.avengers;
-      res.render('pages/prove/prove10', {
-        title: 'Team Activity 10',
-        path: '/teamActivities/10',
+      res.render('pages/prove/prove11', {
+        title: 'Prove 11',
+        path: '/prove/11',
         heroes: heroes
       });
     });
